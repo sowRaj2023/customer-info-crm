@@ -1,0 +1,37 @@
+.customer-grid-container {
+    padding: 20px;
+  }
+  
+  .customer-grid-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .customer-grid-table th,
+  .customer-grid-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .customer-grid-table th {
+    background-color: #f4f4f4;
+    text-align: left;
+  }
+  
+  .customer-grid-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .customer-grid-table button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .customer-grid-table button:hover {
+    background-color: #0056b3;
+  }
+  

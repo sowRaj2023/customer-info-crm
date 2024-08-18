@@ -1,25 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import CustomerInput from './components/CustomerInput';
+import CustomerGrid from './components/CustomerGrid';
+import './App.css'; // Import the CSS file for styling
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      customers: JSON.parse(localStorage.getItem('customers')) || [],
+    };
+  }
+
+  handleSubmit = (customerData) => {
+    this.setState(prevState => {
+      const updatedCustomers = [...prevState.customers, customerData];
+      localStorage.setItem('customers', JSON.stringify(updatedCustomers));
+      return { customers: updatedCustomers };
+    });
+  };
+
+  pushToCRM = (index) => {
+    const customer = this.state.customers[index];
+    // Simulate pushing to CRM
+    console.log('Pushing to CRM:', customer);
+
+    // Example response handling
+    alert('Customer data sent to CRM successfully!');
+  };
+
+  render() {
+    const { customers } = this.state;
+
+    return (
+      <div className="app-container">
+        <CustomerInput onSubmit={this.handleSubmit} />
+        <CustomerGrid data={customers} onPushToCRM={this.pushToCRM} />
+      </div>
+    );
+  }
 }
 
 export default App;
+
+
+
+
